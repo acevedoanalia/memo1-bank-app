@@ -10,6 +10,6 @@ import java.util.List;
 @RepositoryRestResource
 public interface TransactionRepository extends CrudRepository<Transaction, Long> {
     List<Transaction> findTransactionsByCbu(Long cbu);
-    Transaction findAccountByCbu(Long cbu);
+  //  Transaction findTransactionById(Long idTransaction);
 
 }

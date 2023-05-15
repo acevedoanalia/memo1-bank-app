@@ -9,11 +9,20 @@ import javax.persistence.Id;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long cbu;
     private Double amount;
     private Long transactionId;
-    public Transaction(){}
+
+    public Transaction(Long cbu, Double sum) {
+        this.amount=sum;
+        this.cbu=cbu;
+    }
+
+    public Transaction() {
+
+    }
+
 
     public Long getTransactionIdByCBU(Long cbu) {
         return transactionId;
@@ -31,5 +40,9 @@ public class Transaction {
     }
     public void transactionId(Long transactionId) {
         this.transactionId = transactionId;
+    }
+
+    public Long getCbu() {
+        return cbu;
     }
 }
