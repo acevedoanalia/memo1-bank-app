@@ -57,4 +57,8 @@ public class TransactionService {
     public Optional<Transaction> getTransactionById(Long transactionId) {
        return this.transactionsList.findById(transactionId);
     }
+
+    public void deleteTransactionById(Long transactionId) {
+       this.transactionsList.deleteById(transactionId);
+    }
 }

@@ -79,4 +79,8 @@ public class AccountService {
         return transactionService.getTransactionById(transactionId);
 
     }
+
+    public void deleteTransactionById(Long transactionId) {
+        this.transactionService.deleteTransactionById(transactionId);
+    }
 }
