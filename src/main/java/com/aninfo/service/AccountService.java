@@ -43,7 +43,7 @@ public class AccountService {
     }
 
     @Transactional
-    public Account withDrawl(Long cbu, Double sum) {
+    public Account withdraw(Long cbu, Double sum) {
         Account account = accountRepository.findAccountByCbu(cbu);
 
         if (account.getBalance() < sum) {

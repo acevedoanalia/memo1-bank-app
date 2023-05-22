@@ -50,7 +50,7 @@ public class TransactionService {
         return unaTransaction;
     }
 
-    public List<Transaction> getTransactionsFrom(Long cbu) {
+    public Collection<Transaction> getTransactionsFrom(Long cbu) {
         return this.transactionsList.findAllByCbu(cbu);
     }
 }

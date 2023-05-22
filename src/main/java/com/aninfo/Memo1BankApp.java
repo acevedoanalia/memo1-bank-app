@@ -70,7 +70,7 @@ public class Memo1BankApp {
 
 	@PutMapping("/accounts{cbu}/withdraw")
 	public Account withDrawl(@PathVariable Long cbu, @RequestParam Double sum) {
-		return accountService.withDrawl(cbu, sum);
+		return accountService.withdraw(cbu, sum);
 	}
 
 	@PutMapping("/accounts{cbu}/deposit")

@@ -24,24 +24,29 @@ public class Transaction {
     }
 
     public Long getTransactionIdByCBU(Long cbu) {
+
         return transactionId;
     }
 
     public Double getAmount() {
+
         return amount;
     }
-
-    public Long getCBU() {
-        return cbu;
-    }
     public void setAmount(Double amount) {
+
         this.amount = amount;
     }
     public void transactionId(Long transactionId) {
+
+        this.transactionId = transactionId;
+    }
+
+    public void getTransactionId(Long transactionId) {
         this.transactionId = transactionId;
     }
 
     public Long getCbu() {
-        return cbu;
+
+        return this.cbu;
     }
 }
