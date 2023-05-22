@@ -23,7 +23,7 @@ public class Transaction {
 
     }
 
-    public Long getTransactionIdByCBU(Long cbu) {
+    public Long getTransactionIdById(Long transactionId) {
 
         return transactionId;
     }
@@ -41,8 +41,8 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public void getTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
+    public Long findById(Long transactionId) {
+        return this.transactionId = transactionId;
     }
 
     public Long getCbu() {

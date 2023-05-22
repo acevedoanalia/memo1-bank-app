@@ -53,4 +53,8 @@ public class TransactionService {
     public Collection<Transaction> getTransactionsFrom(Long cbu) {
         return this.transactionsList.findAllByCbu(cbu);
     }
+
+    public Optional<Transaction> getTransactionById(Long transactionId) {
+       return this.transactionsList.findById(transactionId);
+    }
 }

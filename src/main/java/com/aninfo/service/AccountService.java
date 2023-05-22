@@ -74,4 +74,9 @@ public class AccountService {
 
         return transactionService.getTransactionsFrom(cbu);
     }
+
+    public Optional<Transaction> findTransactionById(Long transactionId) {
+        return transactionService.getTransactionById(transactionId);
+
+    }
 }
