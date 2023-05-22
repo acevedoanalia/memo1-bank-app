@@ -10,9 +10,9 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long cbu;
-    private Double amount;
     private Long transactionId;
+    private Double amount;
+    private Long cbu;
 
     public Transaction(Long cbu, Double sum) {
         this.amount=sum;
@@ -22,7 +22,6 @@ public class Transaction {
     public Transaction() {
 
     }
-
 
     public Long getTransactionIdByCBU(Long cbu) {
         return transactionId;

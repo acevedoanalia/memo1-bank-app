@@ -69,8 +69,8 @@ public class Memo1BankApp {
 	}
 
 	@PutMapping("/accounts{cbu}/withdraw")
-	public Account withdraw(@PathVariable Long cbu, @RequestParam Double sum) {
-		return accountService.withdraw(cbu, sum);
+	public Account withDrawl(@PathVariable Long cbu, @RequestParam Double sum) {
+		return accountService.withDrawl(cbu, sum);
 	}
 
 	@PutMapping("/accounts{cbu}/deposit")
@@ -79,6 +79,10 @@ public class Memo1BankApp {
 		return accountService.deposit(cbu, sum);
 	}
 
+	@GetMapping("/accounts/transactions")
+	public Collection<Transaction> transactions(@RequestParam Long cbu) {
+		return accountService.getTransactionsFrom(cbu);
+	}
 
 	@Bean
 	public Docket apiDocket() {

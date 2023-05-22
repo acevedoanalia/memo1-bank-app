@@ -17,6 +17,13 @@ import java.util.Optional;
 public class TransactionService {
    @Autowired
     private TransactionRepository transactionsList;
+
+
+   public Transaction newTransaction(Long cbu,Double sum){
+       Transaction transaction=new Transaction(cbu,sum);
+       return transaction;
+
+   }
     public Transaction deposit(Transaction transaction) {
         transaction.setAmount(this.applyPromo(transaction.getAmount()));
         if (transaction.getAmount() <= 0 || transaction.getAmount()==null){
@@ -33,5 +40,17 @@ public class TransactionService {
                       amount+= promotional;
         }
         return amount;
+    }
+    public Transaction withDrawl(Transaction transaction) {
+        transaction.setAmount(this.applyPromo(transaction.getAmount()));
+        if (transaction.getAmount() <= 0 || transaction.getAmount()==null){
+            throw new DepositNegativeSumException("Cannot deposit negative sum");
+        }
+        Transaction unaTransaction=this.transactionsList.save(transaction);
+        return unaTransaction;
+    }
+
+    public List<Transaction> getTransactionsFrom(Long cbu) {
+        return this.transactionsList.findAllByCbu(cbu);
     }
 }

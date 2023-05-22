@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -43,13 +43,13 @@ public class AccountService {
     }
 
     @Transactional
-    public Account withdraw(Long cbu, Double sum) {
+    public Account withDrawl(Long cbu, Double sum) {
         Account account = accountRepository.findAccountByCbu(cbu);
 
         if (account.getBalance() < sum) {
             throw new InsufficientFundsException("Insufficient funds");
         }
-        transactionService.deposit(new Transaction(cbu,sum));
+        transactionService.deposit(transactionService.newTransaction(cbu,sum));
         account.setBalance(account.getBalance() - sum);
         accountRepository.save(account);
         return account;
@@ -62,11 +62,16 @@ public class AccountService {
             throw new DepositNegativeSumException("Cannot deposit negative sums");
         }
 
-        transactionService.deposit(new Transaction(cbu,sum));
+        transactionService.withDrawl(transactionService.newTransaction(cbu,sum));
         Account account = accountRepository.findAccountByCbu(cbu);
         account.setBalance(account.getBalance() + sum);
         accountRepository.save(account);
 
         return account;
+    }
+
+    public Collection<Transaction> getTransactionsFrom(Long cbu) {
+
+        return transactionService.getTransactionsFrom(cbu);
     }
 }
