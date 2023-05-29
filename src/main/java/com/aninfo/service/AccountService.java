@@ -54,23 +54,21 @@ public class AccountService {
         accountRepository.save(account);
         return account;
     }
-//****************************************************************************************************************
+
     @Transactional
     public Account deposit(Long cbu, Double sum) {
 
         if (sum <= 0) {
             throw new DepositNegativeSumException("Cannot deposit negative sums");
         }
-
         Account account = accountRepository.findAccountByCbu(cbu);
         sum = transactionService.applyPromo(sum);
         account.setBalance(account.getBalance() + sum);
         accountRepository.save(account);
         transactionService.deposit(transactionService.newTransaction(cbu,sum));
-
         return account;
     }
-//***************************************************************************************************************
+
     public Collection<Transaction> getTransactionsFrom(Long cbu) {
 
         return transactionService.getTransactionsFrom(cbu);

@@ -21,17 +21,15 @@ public class TransactionService {
 
    public Transaction newTransaction(Long cbu,Double sum){
      Transaction transaction=new Transaction(cbu,sum);
-
-
-       transaction.setCbu(cbu);
-       double promo = this.applyPromo(sum);
-       transaction.setAmount(promo);
-      return this.deposit(transaction);
-       //return transaction;
-
+     transaction.setCbu(cbu);
+     double promo = this.applyPromo(sum);
+     transaction.setAmount(promo);
+     System.console();
+    // return this.deposit(transaction);
+        return transaction;
    }
     public Transaction deposit(Transaction transaction) {
-        transaction.setAmount(this.applyPromo(transaction.getAmount()));
+      //  transaction.setAmount(this.applyPromo(transaction.getAmount()));
         if (transaction.getAmount() <= 0){
             throw new DepositNegativeSumException("Cannot deposit negative sum");
         }
@@ -39,22 +37,19 @@ public class TransactionService {
         return unaTransaction;
     }
 
-    Double applyPromo(Double amount) { //amount=2000
+    Double applyPromo(Double amount) {
         if (amount>= 2000){
-            Double promotional = amount* 0.1; //promotional=200
-
-
+            Double promotional = amount* 0.1;
 
                    if (promotional > 500) {
                        promotional = 500.00;
-
                    }
             amount+= promotional;
         }
         return amount;
     }
     public Transaction withdraw(Transaction transaction) {
-        transaction.setAmount(this.applyPromo(transaction.getAmount()));
+       // transaction.setAmount(this.applyPromo(transaction.getAmount()));
         if (transaction.getAmount() <= 0 || transaction.getAmount()==null){
             throw new DepositNegativeSumException("Cannot deposit negative sum");
         }
