@@ -19,10 +19,10 @@ public class Transaction {
         this.cbu=cbu;
     }
 
-    public Transaction() {
+    /*public Transaction() {
 
     }
-
+*/
     public Long getTransactionIdById(Long transactionId) {
 
         return transactionId;
@@ -35,6 +35,11 @@ public class Transaction {
     public void setAmount(Double amount) {
 
         this.amount = amount;
+    }
+
+    public void setCbu(Long cbu) {
+
+        this.cbu = cbu;
     }
     public void transactionId(Long transactionId) {
 

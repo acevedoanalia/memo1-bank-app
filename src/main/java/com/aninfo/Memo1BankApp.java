@@ -74,7 +74,7 @@ public class Memo1BankApp {
 	}
 
 	@PutMapping("/accounts{cbu}/deposit")
-	public Account deposit(@PathVariable Long cbu, @RequestParam Double sum) {
+	public Account newDeposit(@PathVariable Long cbu, @RequestParam Double sum) {
 
 		return accountService.deposit(cbu, sum);
 	}
