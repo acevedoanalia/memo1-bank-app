@@ -24,12 +24,10 @@ public class TransactionService {
      transaction.setCbu(cbu);
      double promo = this.applyPromo(sum);
      transaction.setAmount(promo);
-     System.console();
-    // return this.deposit(transaction);
-        return transaction;
+     return transaction;
    }
     public Transaction deposit(Transaction transaction) {
-      //  transaction.setAmount(this.applyPromo(transaction.getAmount()));
+
         if (transaction.getAmount() <= 0){
             throw new DepositNegativeSumException("Cannot deposit negative sum");
         }
@@ -49,7 +47,7 @@ public class TransactionService {
         return amount;
     }
     public Transaction withdraw(Transaction transaction) {
-       // transaction.setAmount(this.applyPromo(transaction.getAmount()));
+
         if (transaction.getAmount() <= 0 || transaction.getAmount()==null){
             throw new DepositNegativeSumException("Cannot deposit negative sum");
         }
